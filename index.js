@@ -110,18 +110,24 @@ Person.prototype.toString = function(){
       - Besides the methods on Person.prototype, babies have the ability to `.play()`:
           + Should return a string "Playing with x", x being the favorite toy.
   */
- function Baby() {
-   
+ function Baby(name, age, favoriteToy) {
+   Person.call(this, name, age)
+   this.favoriteToy = favoriteToy;
+  }
+
+  Baby.prototype = Object.create(Person.prototype) // inherits parent
+  Baby.prototype.play = function(){
+    return `Playing with ${this.favoriteToy}`;
   }
  
   
   /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
-    1. 
-    2. 
-    3. 
-    4. 
+    1. Window Binding returns the window
+    2. Implicit Binding returns anything left of the '.'
+    3. Explicit Binding has to be called
+    4. New Binding used when you have a constructor function that needs to create a new object.
   */
   
   
